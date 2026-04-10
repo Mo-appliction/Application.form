@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Inquiry Form 2026 | Magnum Opus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="img.1.png">
+    
+    <style>
+        .logo img { height: 70px; }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        
+        * { font-family: 'Inter', system-ui, sans-serif; }
+        
+        .form-container { box-shadow: 0 25px 50px -12px rgb(30 64 175 / 0.15); }
+        .header-gradient { background: linear-gradient(90deg, #1E40AF, #3B82F6); }
+        
+        .course-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .course-card:hover { transform: translateY(-8px) scale(1.04); box-shadow: 0 25px 30px -10px rgb(30 64 175 / 0.25); }
+        
+        .selected {
+            border-color: #1E40AF;
+            box-shadow: 0 0 0 5px rgba(30, 64, 175, 0.3);
+            position: relative;
+        }
+        .selected::after {
+            content: '✅';
+            position: absolute; top: -10px; right: -10px;
+            background: #10b981; color: white;
+            width: 28px; height: 28px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; animation: popIn 0.4s ease;
+        }
+        @keyframes popIn { 0% { transform: scale(0.3); } 100% { transform: scale(1); } }
+        
+        .input-focus:focus {
+            border-color: #1E40AF;
+            box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.2);
+            transform: scale(1.02);
+        }
+        
+        /* Beautiful Loading Animation */
+        #loadingScreen {
+            position: fixed; inset: 0;
+            background: linear-gradient(135deg, #1E40AF, #3B82F6);
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            z-index: 9999;
+        }
+        
+        .logo-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+        }
+        
+        .logo-circle {
+            width: 140px;
+            height: 140px;
+            border: 6px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 9999px;
+            overflow: hidden;
+            animation: rotate 2s linear infinite;
+            box-shadow: 0 0 40px rgba(255,255,255,0.4);
+        }
+        
+        .logo-inner {
+            width: 100%;
+            height: 100%;
+            background: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(0.95); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .loading-text {
+            animation: fadeIn 1.5s ease-in-out infinite alternate;
+        }
+    </style>
+</head>
+<body class="bg-[#F8FAFC]">
+
+    <!-- Loading Screen with Nice Effect -->
+    <div id="loadingScreen">
+        <div class="logo-container">
+            <div class="logo-circle">
+                <div class="logo-inner">
+                    <img src="img.1.png" 
+                         alt="Magnum Opus Logo" 
+                         class="w-24 h-24 object-contain">
+                </div>
+            </div>
+        </div>
+        <p class="mt-10 text-2xl font-semibold text-white tracking-wide loading-text">Magnum Opus</p>
+        <p class="text-blue-100 mt-2 text-lg loading-text">Preparing Admission Form...</p>
+    </div>
+
+    <!-- HEADER -->
+    <div class="header-gradient text-white py-6 px-6 md:px-12">
+        <div class="max-w-5xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-x-4">
+                <div class="w-14 h-14 bg-white rounded-3xl flex items-center justify-center overflow-hidden border border-white/30 shadow-inner">
+                    <img src="img.1.png" 
+                         alt="Magnum Opus" class="w-12 h-12 object-contain">
+                </div>
+                <div>
+                    <h2 class="text-3xl font-semibold tracking-tight">Magnum Opus</h2>
+                    <p class="text-blue-100 text-sm -mt-1">JEE & NEET Coaching</p>
+                </div>
+            </div>
+            
+            <div class="text-center flex-1 px-8">
+                <h1 class="text-4xl md:text-5xl font-semibold tracking-tight">
+                    Admission Inquiry Form <span class="text-3xl md:text-4xl">2026</span>
+                </h1>
+            </div>
+
+            <div class="hidden md:flex items-center gap-x-8 text-sm">
+                <div class="flex items-center gap-x-1.5 bg-white/10 px-4 py-2 rounded-3xl">
+                    <i class="fa-solid fa-check-circle text-emerald-300"></i>
+                    <span class="font-medium">100% Trusted</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto px-4 md:px-8 pb-16">
+        <div class="form-container bg-white rounded-3xl mt-8 md:mt-[-30px] border border-white/50 p-8 md:p-10">
+
+            <form id="admissionForm" class="space-y-10">
+
+                <!-- Student Profile -->
+                <div>
+                    <h3 class="section-header text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-x-3">
+                        <i class="fa-solid fa-user-graduate text-[#1E40AF]"></i>
+                        Student Profile
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div><label class="block text-sm font-medium text-gray-700 mb-1.5">Full Name <span class="text-red-500">*</span></label>
+                            <input type="text" id="fullName" class="input-focus w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none text-base" placeholder="Enter your full name" required></div>
+                        <div><label class="block text-sm font-medium text-gray-700 mb-1.5">Father’s Name <span class="text-red-500">*</span></label>
+                            <input type="text" id="fatherName" class="input-focus w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none text-base" placeholder="Father's Name" required></div>
+                        <div><label class="block text-sm font-medium text-gray-700 mb-1.5">Mother’s Name <span class="text-red-500">*</span></label>
+                            <input type="text" id="motherName" class="input-focus w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none text-base" placeholder="Mother's Name" required></div>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1.5">Gender <span class="text-red-500">*</span></label>
+                                <select id="gender" class="input-focus w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none text-base">
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1.5">Date of Birth <span class="text-red-500">*</span></label>
+                                <input type="date" id="dob" class="input-focus w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none text-base" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Details -->
+                <div>
+                    <h3 class="section-header text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-x-3">
+                        <i class="fa-solid fa-phone-volume text-[#1E40AF]"></i>
+                        Contact Details
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1.5">Student WhatsApp Number <span class="text-red-500">*</span></label>
+                            <div class="flex gap-3">
+                                <div class="w-28 bg-gray-50 border border-gray-200 rounded-2xl px-4 py-4 text-center font-medium flex items-center justify-center"><i class="fa-solid fa-india-flag mr-2"></i>+91</div>
+                                <input type="tel" id="studentMobile" maxlength="10" class="input-focus flex-1 px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none text-base" placeholder="9876543210" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1.5">Parents Mobile Number <span class="text-red-500">*</span></label>
+                            <div class="flex gap-3">
+                                <div class="w-28 bg-gray-50 border border-gray-200 rounded-2xl px-4 py-4 text-center font-medium flex items-center justify-center"><i class="fa-solid fa-india-flag mr-2"></i>+91</div>
+                                <input type="tel" id="parentMobile" maxlength="10" class="input-focus flex-1 px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none text-base" placeholder="9876543210" required>
+                            </div>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-1.5">Email Address <span class="text-red-500">*</span></label>
+                            <input type="email" id="email" class="input-focus w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none text-base" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Choice -->
+                <div>
+                    <h3 class="section-header text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-x-3">
+                        <i class="fa-solid fa-book-open text-[#1E40AF]"></i>
+                        Course Choice
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div onclick="toggleCourse(this)" id="jeeCard" class="course-card border-2 border-transparent bg-white rounded-3xl p-7 cursor-pointer">
+                            <div class="flex items-start gap-x-4">
+                                <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-3xl">⚙️</div>
+                                <div class="flex-1"><h4 class="text-xl font-semibold text-gray-800">JEE (Main + Advanced)</h4><p class="text-gray-500 text-sm mt-1">Physics • Chemistry • Mathematics</p></div>
+                            </div>
+                            <button onclick="event.stopImmediatePropagation(); showFacultyModal('jee')" class="mt-6 w-full bg-[#1E40AF] text-white py-3 rounded-2xl font-semibold flex items-center justify-center gap-x-2 hover:bg-blue-800 transition-all">
+                                <i class="fa-solid fa-chalkboard-teacher"></i> Faculty Details
+                            </button>
+                        </div>
+
+                        <div onclick="toggleCourse(this)" id="neetCard" class="course-card border-2 border-transparent bg-white rounded-3xl p-7 cursor-pointer">
+                            <div class="flex items-start gap-x-4">
+                                <div class="w-12 h-12 bg-teal-100 text-teal-600 rounded-2xl flex items-center justify-center text-3xl">🩺</div>
+                                <div class="flex-1"><h4 class="text-xl font-semibold text-gray-800">NEET (UG)</h4><p class="text-gray-500 text-sm mt-1">Biology • Physics • Chemistry</p></div>
+                            </div>
+                            <button onclick="event.stopImmediatePropagation(); showFacultyModal('neet')" class="mt-6 w-full bg-[#1E40AF] text-white py-3 rounded-2xl font-semibold flex items-center justify-center gap-x-2 hover:bg-blue-800 transition-all">
+                                <i class="fa-solid fa-chalkboard-teacher"></i> Faculty Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Educational Background -->
+                <div>
+                    <h3 class="section-header text-2xl font-semibold text-gray-800 mb-6">Educational Background</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1.5">Current Standard <span class="text-red-500">*</span></label>
+                            <select id="currentStandard" class="input-focus w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none text-base">
+                                <option value="">Select Class</option>
+                                <option value="10th">10th</option>
+                                <option value="11th">11th</option>
+                                <option value="12th">12th</option>
+                                <option value="Dropper">Dropper</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1.5">Target Year <span class="text-red-500">*</span></label>
+                            <select id="targetYear" class="input-focus w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none text-base">
+                                <option value="">Select Year</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <div class="pt-8">
+                    <button type="button" onclick="submitForm()" 
+                            class="submit-btn w-full py-6 bg-[#1E40AF] hover:bg-blue-800 text-white text-xl font-semibold rounded-3xl flex items-center justify-center gap-x-3 transition-all">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        SUBMIT INQUIRY
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="text-center mt-10 text-gray-600 text-sm space-y-1">
+            <p><strong>Address:</strong> Panchgari Bazar (Near Rajasthani Dharamsala), Dhanbad, Jharkhand - 828113</p>
+            <p>📧 Email: <a href="mailto:dkjha.physics@gmail.com" class="text-[#1E40AF] hover:underline">dkjha.physics@gmail.com</a></p>
+            <p>📞 WhatsApp: <a href="https://wa.me/918271250067" target="_blank" class="text-[#1E40AF] hover:underline">8271250067</a></p>
+        </div>
+    </div>
+
+    <!-- Faculty Modal -->
+    <div id="facultyModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+        <div class="bg-white rounded-3xl max-w-lg w-full mx-4 p-8">
+            <h3 id="modalTitle" class="text-2xl font-semibold flex items-center gap-x-3 mb-6"></h3>
+            <div id="facultyList" class="space-y-5"></div>
+            <button onclick="hideFacultyModal()" class="mt-8 w-full py-4 bg-gray-900 text-white rounded-3xl font-medium">Close</button>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full text-center">
+            <i class="fa-solid fa-circle-check text-6xl text-emerald-500 mb-4"></i>
+            <h2 class="text-3xl font-semibold text-gray-800">Inquiry Submitted Successfully!</h2>
+            <p class="mt-3 text-gray-600">Thank you! Our counselor will contact you shortly.</p>
+            
+            <div class="mt-8 space-y-4">
+                <p class="text-sm font-medium text-gray-700">Send your details to:</p>
+                <button onclick="sendViaWhatsApp()" class="w-full flex items-center justify-center gap-x-3 bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-3xl font-semibold transition-all">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i> Send via WhatsApp
+                </button>
+            </div>
+            <button onclick="closeSuccessModal()" class="mt-6 text-gray-500 hover:text-gray-700 text-sm font-medium">Close</button>
+        </div>
+    </div>
+
+    <script>
+        let selectedCourses = [];
+
+        window.onload = () => {
+            const loading = document.getElementById('loadingScreen');
+            setTimeout(() => {
+                loading.style.opacity = '0';
+                setTimeout(() => loading.style.display = 'none', 800);
+            }, 5000);
+        };
+
+        function toggleCourse(card) {
+            const isJEE = card.id === 'jeeCard';
+            const course = isJEE ? 'JEE' : 'NEET';
+            if (selectedCourses.includes(course)) {
+                selectedCourses = selectedCourses.filter(c => c !== course);
+                card.classList.remove('selected');
+            } else {
+                selectedCourses.push(course);
+                card.classList.add('selected');
+            }
+        }
+
+        function showFacultyModal(course) {
+            const modal = document.getElementById('facultyModal');
+            const title = document.getElementById('modalTitle');
+            const list = document.getElementById('facultyList');
+            list.innerHTML = '';
+
+            if (course === 'jee') {
+                title.innerHTML = `<i class="fa-solid fa-chalkboard-teacher text-[#1E40AF]"></i> JEE Expert Faculty`;
+                list.innerHTML = `
+                    <div class="flex items-center gap-x-4 bg-gray-50 rounded-2xl p-5"><i class="fa-solid fa-atom text-orange-500 text-3xl"></i><div class="flex-1"><div class="font-semibold text-lg">Physics</div><div class="text-gray-600">Deepak Jha • 18+ years experience</div></div></div>
+                    <div class="flex items-center gap-x-4 bg-gray-50 rounded-2xl p-5"><i class="fa-solid fa-flask text-blue-500 text-3xl"></i><div class="flex-1"><div class="font-semibold text-lg">Chemistry</div><div class="text-gray-600">Vidhan Singh • 5+ years experience</div></div></div>
+                    <div class="flex items-center gap-x-4 bg-gray-50 rounded-2xl p-5"><i class="fa-solid fa-square-root-alt text-purple-500 text-3xl"></i><div class="flex-1"><div class="font-semibold text-lg">Mathematics</div><div class="text-gray-600">Dashrat Kumar • 12+ years experience</div></div></div>
+                `;
+            } else {
+                title.innerHTML = `<i class="fa-solid fa-chalkboard-teacher text-[#1E40AF]"></i> NEET Expert Faculty`;
+                list.innerHTML = `
+                    <div class="flex items-center gap-x-4 bg-gray-50 rounded-2xl p-5"><i class="fa-solid fa-dna text-teal-500 text-3xl"></i><div class="flex-1"><div class="font-semibold text-lg">Biology</div><div class="text-gray-600">Dr. U.K. Paul • 12+ years experience</div></div></div>
+                    <div class="flex items-center gap-x-4 bg-gray-50 rounded-2xl p-5"><i class="fa-solid fa-atom text-orange-500 text-3xl"></i><div class="flex-1"><div class="font-semibold text-lg">Physics</div><div class="text-gray-600">Deepak Jha • 18+ years experience</div></div></div>
+                    <div class="flex items-center gap-x-4 bg-gray-50 rounded-2xl p-5"><i class="fa-solid fa-flask text-blue-500 text-3xl"></i><div class="flex-1"><div class="font-semibold text-lg">Chemistry</div><div class="text-gray-600">Vidhan Singh • 5+ years experience</div></div></div>
+                `;
+            }
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function hideFacultyModal() {
+            const modal = document.getElementById('facultyModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function submitForm() {
+            if (selectedCourses.length === 0) {
+                alert("⚠️ Please select at least one course (JEE or NEET)");
+                return;
+            }
+            document.getElementById('successModal').classList.remove('hidden');
+            document.getElementById('successModal').classList.add('flex');
+        }
+
+        function sendViaEmail() {
+            const email = "dkjha.physics@gmail.com";
+            const subject = encodeURIComponent("Magnum Opus Admission Inquiry 2026");
+            const body = encodeURIComponent(
+                "Dear Team,\n\nHere is my admission inquiry:\n\n" +
+                "Full Name: " + (document.getElementById('fullName').value || "N/A") + "\n" +
+                "Father: " + (document.getElementById('fatherName').value || "N/A") + "\n" +
+                "Mother: " + (document.getElementById('motherName').value || "N/A") + "\n" +
+                "Student WhatsApp: " + (document.getElementById('studentMobile').value || "N/A") + "\n" +
+                "Parents Mobile: " + (document.getElementById('parentMobile').value || "N/A") + "\n" +
+                "Email: " + (document.getElementById('email').value || "N/A") + "\n" +
+                "Course: " + selectedCourses.join(" & ") + "\n\nThank you."
+            );
+            window.open(`mailto:${email}?subject=${subject}&body=${body}`, '_blank');
+        }
+
+        function sendViaWhatsApp() {
+            const phone = "918271250067";
+            const message = encodeURIComponent(
+                "Magnum Opus Admission Inquiry 2026\n\n" +
+                "Name: " + (document.getElementById('fullName').value || "N/A") + "\n" +
+                "Father: " + (document.getElementById('fatherName').value || "N/A") + "\n" +
+                "Mother: " + (document.getElementById('motherName').value || "N/A") + "\n" +
+                "Student WhatsApp: " + (document.getElementById('studentMobile').value || "N/A") + "\n" +
+                "Parents Mobile: " + (document.getElementById('parentMobile').value || "N/A") + "\n" +
+                "Email: " + (document.getElementById('email').value || "N/A") + "\n" +
+                "Course: " + selectedCourses.join(" & ") + "\n\nPlease contact me soon."
+            );
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.add('hidden');
+            document.getElementById('successModal').classList.remove('flex');
+        }
+    </script>
+</body>
+</html>
